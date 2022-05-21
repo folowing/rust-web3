@@ -10,7 +10,7 @@ pub struct BlockHeader {
     #[serde(rename = "parentHash")]
     pub parent_hash: H256,
     /// Hash of the uncles
-    #[serde(rename = "sha3Uncles")]
+    #[serde(rename = "sha3Uncles", default)]
     pub uncles_hash: H256,
     /// Miner/author's address.
     #[serde(rename = "miner", default, deserialize_with = "null_to_default")]
@@ -22,7 +22,7 @@ pub struct BlockHeader {
     #[serde(rename = "transactionsRoot")]
     pub transactions_root: H256,
     /// Transactions receipts root hash
-    #[serde(rename = "receiptsRoot")]
+    #[serde(rename = "receiptsRoot", default)]
     pub receipts_root: H256,
     /// Block number. None if pending.
     pub number: Option<U64>,
@@ -30,13 +30,13 @@ pub struct BlockHeader {
     #[serde(rename = "gasUsed")]
     pub gas_used: U256,
     /// Gas Limit
-    #[serde(rename = "gasLimit")]
+    #[serde(rename = "gasLimit", default)]
     pub gas_limit: U256,
     /// Base fee per unit of gas (if past London)
     #[serde(rename = "baseFeePerGas", skip_serializing_if = "Option::is_none")]
     pub base_fee_per_gas: Option<U256>,
     /// Extra data
-    #[serde(rename = "extraData")]
+    #[serde(rename = "extraData", default)]
     pub extra_data: Bytes,
     /// Logs bloom
     #[serde(rename = "logsBloom")]
@@ -44,6 +44,7 @@ pub struct BlockHeader {
     /// Timestamp
     pub timestamp: U256,
     /// Difficulty
+    #[serde(default)]
     pub difficulty: U256,
     /// Mix Hash
     #[serde(rename = "mixHash")]
@@ -62,7 +63,7 @@ pub struct Block<TX> {
     #[serde(rename = "parentHash")]
     pub parent_hash: H256,
     /// Hash of the uncles
-    #[serde(rename = "sha3Uncles")]
+    #[serde(rename = "sha3Uncles", default)]
     pub uncles_hash: H256,
     /// Miner/author's address.
     #[serde(rename = "miner", default, deserialize_with = "null_to_default")]
@@ -74,7 +75,7 @@ pub struct Block<TX> {
     #[serde(rename = "transactionsRoot")]
     pub transactions_root: H256,
     /// Transactions receipts root hash
-    #[serde(rename = "receiptsRoot")]
+    #[serde(rename = "receiptsRoot", default)]
     pub receipts_root: H256,
     /// Block number. None if pending.
     pub number: Option<U64>,
@@ -82,13 +83,13 @@ pub struct Block<TX> {
     #[serde(rename = "gasUsed")]
     pub gas_used: U256,
     /// Gas Limit
-    #[serde(rename = "gasLimit")]
+    #[serde(rename = "gasLimit", default)]
     pub gas_limit: U256,
     /// Base fee per unit of gas (if past London)
     #[serde(rename = "baseFeePerGas", skip_serializing_if = "Option::is_none")]
     pub base_fee_per_gas: Option<U256>,
     /// Extra data
-    #[serde(rename = "extraData")]
+    #[serde(rename = "extraData", default)]
     pub extra_data: Bytes,
     /// Logs bloom
     #[serde(rename = "logsBloom")]
@@ -96,6 +97,7 @@ pub struct Block<TX> {
     /// Timestamp
     pub timestamp: U256,
     /// Difficulty
+    #[serde(default)]
     pub difficulty: U256,
     /// Total difficulty
     #[serde(rename = "totalDifficulty")]
